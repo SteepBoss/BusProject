@@ -2,6 +2,9 @@ import pygame as pg
 
 pg.init()
 
+# Установка начального заголовка
+pg.display.set_caption("SimulationVirus")
+
 # Размеры экрана
 screen_width, screen_height = 1280, 720
 screen = pg.display.set_mode((screen_width, screen_height))
@@ -45,7 +48,6 @@ while running:
     pg.draw.line(screen, bus_outline_color, bus.bottomleft, bus.bottomright, 2)
     pg.draw.line(screen, bus_outline_color, bus.topright, bus.bottomright, 2)
 
-    # Отрисовка всех прямоугольников
     for rect in rectangles:
         pg.draw.rect(screen, (0, 128, 0), (rect['x'], rect['y'], 30, 30))
     pg.display.flip()
