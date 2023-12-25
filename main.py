@@ -36,11 +36,12 @@ while running:
         screen.fill((0, 0, 0))
         for human in humans:
             human.update_position(speed)
-            human.handle_collision(bus)
+            human.handle_collision(bus, seats)
+            human.move_towards_target()
             pg.draw.rect(screen, (0, 128, 0), (human.x, human.y, 30, 30))
         current_time = pg.time.get_ticks()
         if current_time - spawn_timer > time_spawn:
-            if len(humans) < 4:
+            if len(humans) < 3:
                 new_human = Human(0, 800, 1, 0, random.randint(0, 100),
                                   random.randint(0, 100), random.randint(0, 100), random.randint(0, 100))
                 humans.append(new_human)

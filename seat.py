@@ -1,4 +1,4 @@
-from settings import *
+import pygame as pg
 
 
 class Seat:
@@ -8,12 +8,23 @@ class Seat:
         self.count = 0
         self.x = x
         self.y = y
+        self.occupied = False
+
+    def is_vacant(self):
+        return not self.occupied
 
     def set_count(self, count):
         self.count = count
 
     def draw_rect(self, screen_param, rect_width_param, rect_height_param):
-        pg.draw.rect(screen_param, (255, 0, 0), (self.x, self.y, rect_width_param, rect_height_param))
+        color = (255, 0, 0) if not self.occupied else (0, 128, 0)
+        pg.draw.rect(screen_param, color, (self.x, self.y, rect_width_param, rect_height_param))
+
+    def occupy_seat(self):
+        self.occupied = True
+
+    def is_occupied(self):
+        return self.occupied
 
     @staticmethod
     def draw_seats(seats, screen_param):
