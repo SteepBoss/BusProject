@@ -2,6 +2,7 @@ from statistic import draw_statistics
 from settings import *
 from seat import Seat
 
+spawn_timer = pg.time.get_ticks()
 seats = []
 for j in range(sit_vertical):
     for i in range(sit_horizont):
@@ -39,7 +40,7 @@ while running:
             pg.draw.rect(screen, (0, 128, 0), (human.x, human.y, 30, 30))
         current_time = pg.time.get_ticks()
         if current_time - spawn_timer > time_spawn:
-            if len(humans) < 2:
+            if len(humans) < 4:
                 new_human = Human(0, 800, 1, 0, random.randint(0, 100),
                                   random.randint(0, 100), random.randint(0, 100), random.randint(0, 100))
                 humans.append(new_human)
