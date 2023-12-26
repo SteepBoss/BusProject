@@ -48,7 +48,6 @@ class Human:
         if self.target_seat and not self.on_seat:  # Проверяем флаг on_seat
             target_x, target_y = self.target_seat.x, self.target_seat.y
             distance_to_target = ((self.x - target_x) ** 2 + (self.y - target_y) ** 2)
-
             if distance_to_target <= seat_radius:  # Если человек пришел на свое место
                 print("Человек пришел на свое место!")
                 self.target_seat.occupy_seat()  # Занимаем место

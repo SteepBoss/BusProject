@@ -34,4 +34,4 @@ class Seat:
             screen_param.blit(seat_text, (seat.x, seat.y))
 
     def __str__(self):
-        return f"[{self.count}, {self.x}, {self.y}]"
+        return f"[{self.count}, {self.x}, {self.y}, {self.occupied}]"

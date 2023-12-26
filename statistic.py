@@ -40,10 +40,15 @@ def draw_statistics(screen_surface, humans_list, speed_param, sleep_param, rest_
         ]
         text_surfaces = [small_font.render(line, True, (255, 255, 255)) for line in lines]
         all_text_surfaces_left.extend(text_surfaces)
+
+        radius = 40
+        pg.draw.circle(screen,  (0, 125, 0), (human.x + rect_width // 2, human.y + rect_height // 2),
+                       radius, 1)
         text_x_inside = human.x + rect_width // 2
         text_y_inside = human.y + rect_height // 2
         human_text_inside = small_font.render(f"{idx + 1}", True, (255, 255, 255))
         text_rect_inside = human_text_inside.get_rect(center=(text_x_inside, text_y_inside))
+
         screen_surface.blit(human_text_inside, text_rect_inside)
 
     for text_surface in all_text_surfaces_left:

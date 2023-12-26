@@ -49,7 +49,8 @@ while running:
 
         for idx, seat in enumerate(seats, start=1):
             seat.set_count(idx)
-
+        # for seat in seats:
+        #     print(seat)
         pg.draw.line(screen, bus_outline_color, bus.topleft, (bus.left, left_side_bus), 1)
         pg.draw.line(screen, bus_outline_color, bus.topleft, bus.topright, 1)
         pg.draw.line(screen, bus_outline_color, bus.bottomleft, bus.bottomright, 1)
