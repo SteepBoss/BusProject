@@ -15,6 +15,7 @@ class Human:
         self.sit_on_seat_available = False
         self.target_seat = None
         self.on_seat = False
+        self.is_moving_to_point = False
 
     def sit_on_seat(self, seat):
         if self.sit_on_seat_available:
@@ -34,7 +35,8 @@ class Human:
                 if available_seats:
                     self.target_seat = random.choice(available_seats)
 
-    def get_available_seats(self, all_seats):
+    @staticmethod
+    def get_available_seats(all_seats):
         # Возвращает список доступных мест
         return [seat for seat in all_seats if seat.is_vacant()]
 
@@ -60,7 +62,6 @@ class Human:
                     x_difference = target_point[0] - self.x
                     self.direction_x = 1 if x_difference > 0 else -1
                     self.direction_y = 0  # Устанавливаем направление по оси Y в 0
-
 
             elif self.target_seat and not self.is_moving_to_point:
                 # Ваш текущий код для движения к месту
