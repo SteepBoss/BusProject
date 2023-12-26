@@ -34,15 +34,13 @@ def draw_statistics(screen_surface, humans_list, speed_param, sleep_param, rest_
     for idx, human in enumerate(humans_list):
         lines = [
             f"Human {idx + 1} Pos: (X{human.x}, Y{human.y})",
+            f"Health : {human.health}",
             f"Direct X: {human.direction_x}, Direct Y: {human.direction_y}",
             f"Sleep-{human.sleep}, rest-{human.rest}, nutrition-{human.nutrition}"
             f", vaccination-{human.vaccination}"
         ]
         text_surfaces = [small_font.render(line, True, (255, 255, 255)) for line in lines]
         all_text_surfaces_left.extend(text_surfaces)
-        radius = 40
-        human_circle = pg.draw.circle(screen,  (0, 125, 0),
-                                      (human.x + rect_width // 2, human.y + rect_height // 2), radius, 1)
         text_x_inside = human.x + rect_width // 2
         text_y_inside = human.y + rect_height // 2
         human_text_inside = small_font.render(f"{idx + 1}", True, (255, 255, 255))

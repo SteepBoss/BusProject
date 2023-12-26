@@ -38,14 +38,34 @@ while running:
             human.update_position(speed)
             human.handle_collision(bus, seats)
             human.move_towards_target(all_seats=seats)
+            human.draw_circle(screen)
             pg.draw.rect(screen, (0, 128, 0), (human.x, human.y, 30, 30))
         current_time = pg.time.get_ticks()
+
         if current_time - spawn_timer > time_spawn:
-            if len(humans) < 10:
+            if len(humans) < 20:
                 new_human = Human(0, 800, 1, 0, random.randint(0, 100),
                                   random.randint(0, 100), random.randint(0, 100), random.randint(0, 100))
                 humans.append(new_human)
                 spawn_timer = current_time
+
+        for i, human1 in enumerate(humans):
+            for j, human2 in enumerate(humans):
+                if i < j and human1.check_collision_with_circles(human2):
+                    if human1.health <= 40 or human2.health <= 40:
+                        # Если здоровье хотя бы у одного из людей меньше 50, обнуляем навыки у обоих
+                        human1.sleep = 0
+                        human1.rest = 0
+                        human1.nutrition = 0
+                        human1.vaccination = 0
+
+                        human2.sleep = 0
+                        human2.rest = 0
+                        human2.nutrition = 0
+                        human2.vaccination = 0
+                    else:
+                        # Здоровье у обоих больше 50, никто никого не заражает
+                        pass
 
         for idx, seat in enumerate(seats, start=1):
             seat.set_count(idx)
