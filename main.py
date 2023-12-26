@@ -37,11 +37,11 @@ while running:
         for human in humans:
             human.update_position(speed)
             human.handle_collision(bus, seats)
-            human.move_towards_target()
+            human.move_towards_target(all_seats=seats)
             pg.draw.rect(screen, (0, 128, 0), (human.x, human.y, 30, 30))
         current_time = pg.time.get_ticks()
         if current_time - spawn_timer > time_spawn:
-            if len(humans) < 3:
+            if len(humans) < 10:
                 new_human = Human(0, 800, 1, 0, random.randint(0, 100),
                                   random.randint(0, 100), random.randint(0, 100), random.randint(0, 100))
                 humans.append(new_human)
@@ -51,6 +51,8 @@ while running:
             seat.set_count(idx)
         # for seat in seats:
         #     print(seat)
+        # for human in humans:
+        #     print(human)
         pg.draw.line(screen, bus_outline_color, bus.topleft, (bus.left, left_side_bus), 1)
         pg.draw.line(screen, bus_outline_color, bus.topleft, bus.topright, 1)
         pg.draw.line(screen, bus_outline_color, bus.bottomleft, bus.bottomright, 1)
