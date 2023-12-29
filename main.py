@@ -43,7 +43,7 @@ while running:
         current_time = pg.time.get_ticks()
 
         if current_time - spawn_timer > time_spawn:
-            if len(humans) < 20:
+            if len(humans) < 4:
                 new_human = Human(0, 800, 1, 0, random.randint(0, 100),
                                   random.randint(0, 100), random.randint(0, 100), random.randint(0, 100))
                 humans.append(new_human)
